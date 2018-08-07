@@ -1,0 +1,8 @@
+site_name: Time Series API
+pages:
+- Home: index.md
+- Quick start: quick_start.md
+- Spreadsheet integration: spreadsheet_integration.md
+- API reference: api_reference.md
+- Third party: third_party.md
+theme: readthedocs
