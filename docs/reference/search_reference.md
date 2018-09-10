@@ -1,9 +1,10 @@
+# API reference: search
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
-- [Referencia API: search](#referencia-api-search)
-  - [Tabla de parámetros](#tabla-de-parametros)
+- [Parameters](#parameters)
     - [`q`](#q)
     - [`dataset_theme`, `units`, `dataset_publisher_name`, `dataset_source`, `catalog_id`](#dataset_theme-units-dataset_publisher_name-dataset_source-catalog_id)
     - [`limit`](#limit)
@@ -11,75 +12,73 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Referencia API: search
+Endpoint: `/search`
 
-Recurso: `/search`
+`/search` endpoint allows to look for series using a string, being able to filter results with other attributes (ie.: by theme or units).
 
-El recurso `/search` permite buscar series a partir de un texto, proporcionando además algunos filtros (ej.: por tema o por unidades de las series).
-
-## Tabla de parámetros
+## Parameters
 
 <table>
     <tr>
-        <th>Nombre</th>
-        <th>Requerido</th>
-        <th>Tipo</th>
+        <th>Name</th>
+        <th>Required</th>
+        <th>Type</th>
         <th>Default</th>
-        <th>Ejemplos</th>
+        <th>Examples</th>
     </tr>
     <tr>
         <td>q</td>
-        <td>Si</td>
-        <td>Texto</td>
+        <td>Yes</td>
+        <td>String</td>
         <td>N/A</td>
         <td>q=ipc</td>
     </tr>
     <tr>
         <td>dataset_theme</a></td>
         <td>No</td>
-        <td>Uno de los valores listados en <a href="https://apis.datos.gob.ar/series/api/search/dataset_theme">/search/dataset_theme</a></em></td>
+        <td>One of the listed values in <a href="https://apis.datos.gob.ar/series/api/search/dataset_theme">/search/dataset_theme</a></em></td>
         <td>N/A</td>
         <td>dataset_theme="Finanzas Públicas"</td>
     </tr>
     <tr>
         <td>units</a></td>
         <td>No</td>
-        <td>Uno de los valores listados en <a href="https://apis.datos.gob.ar/series/api/search/field_units">/search/field_units</a></td>
+        <td>One of the listed values in <a href="https://apis.datos.gob.ar/series/api/search/field_units">/search/field_units</a></td>
         <td>N/A</td>
         <td>units="Millones de pesos"</td>
     </tr>
     <tr>
         <td>dataset_publisher_name</a></td>
         <td>No</td>
-        <td>Uno de los valores listados en <a href="https://apis.datos.gob.ar/series/api/search/dataset_publisher_name">/search/dataset_publisher_name</a></td>
+        <td>One of the listed values in <a href="https://apis.datos.gob.ar/series/api/search/dataset_publisher_name">/search/dataset_publisher_name</a></td>
         <td>N/A</td>
         <td>dataset_publisher_name="Subsecretaría de Programación Macroeconómica."</td>
     </tr>
     <tr>
         <td>dataset_source</a></td>
         <td>No</td>
-        <td>Uno de los valores listados en <a href="https://apis.datos.gob.ar/series/api/search/dataset_source">/search/dataset_source</a></td>
+        <td>One of the listed values in <a href="https://apis.datos.gob.ar/series/api/search/dataset_source">/search/dataset_source</a></td>
         <td>N/A</td>
         <td>dataset_source="Ministerio de Hacienda"</td>
     </tr>
     <tr>
         <td>catalog_id</a></td>
         <td>No</td>
-        <td>Uno de los valores listados en <a href="https://apis.datos.gob.ar/series/api/search/catalog_id">/search/catalog_id</a></td>
+        <td>One of the listed values in <a href="https://apis.datos.gob.ar/series/api/search/catalog_id">/search/catalog_id</a></td>
         <td>N/A</td>
         <td>catalog_id="sspm"</td>
     </tr>
     <tr>
         <td>limit</a></td>
         <td>No</td>
-        <td>Número entero positivo, no mayor que 1000.</td>
+        <td>Positive integer, not greater than 1000.</td>
         <td class="s4" dir="ltr">10</td>
         <td>limit=50</td>
     </tr>
     <tr>
         <td>start</a></td>
         <td>No</td>
-        <td>Número entero positivo o 0.</td>
+        <td>Positive integer or 0.</td>
         <td class="s4" dir="ltr">0</td>
         <td>start=100</td>
     </tr>
@@ -87,28 +86,24 @@ El recurso `/search` permite buscar series a partir de un texto, proporcionando 
 
 ### `q`
 
-Texto de entrada a buscar en la base de series de tiempo. Puede ser abritrariamente largo, pero se recomienda ingresar una o más palabras clave.
+String to input for looking in the database. It can be of any long, but is recommended to input one or more key words.
 
 ### `dataset_theme`, `units`, `dataset_publisher_name`, `dataset_source`, `catalog_id`
 
-**Estos parámetros pueden ser usados como filtros en los resultados de la búsqueda**. Al aplicarse, se muestran únicamente aquellos resultados que sean compatibles con la especificación.
+**These parameters can be used as filters in the search results**. When applied, only matching results are shown.
 
-Por ejemplo: un pedido con `units=Millones de pesos` sólo contendrá series de tiempo que estén expresadas en millones de pesos.
+Example: `units=Millones de pesos` will only contain results where units series are in "millones de pesos".
 
-**Los términos que aceptan estos parámetros son especificados en _recursos auxiliares_** que devuelven la lista entera de valores aceptados en los filtros.
+**Valid filtering values for the parameters are specified in auxiliary endpoints of `search` main one** that return a complete list of accepted values in the filters.
 
-Por ejemplo: un pedido a [`/search/field_units`](https://apis.datos.gob.ar/series/api/search/field_units/) devuelve una lista de los términos que se le pueden pasar al parámetro `units`. Cualquier otra opción devolverá una lista vacía de resultados (al no haber coincidencias). Consultar la tabla de parámetros para ver los endpoints auxiliares.
+Example: [`/search/field_units`](https://apis.datos.gob.ar/series/api/search/field_units/) returns a list of valid values to be used with `units` parameter. Any other option will return an empty list (because there will be no matches). Parameters table have all auxiliary endpoints available.
 
 ### `limit`
 
-Este parámetro es utilizado junto a [`start`](#start) para controlar el paginado de los resultados devueltos por la API. Debe especificarse un número entero positivo, no mayor que 1000, ya que esa es la cantidad máxima de resultados devueltos por la API. El valor por defecto si no se especifica valor alguno es 10.
+Parameter used together with [`start`](#start) to control pagination of API call results. Must be a positive integer not greater than 1000. Default value is 100.
 
 ### `start`
 
-Este parámetro es utilizado junto a [`limit`](#limit) para controlar el paginado de los resultados devueltos por la API. Debe especificarse un número entero positivo o 0. El valor por defecto si no se especifica valor alguno es 0.
+Parameter used together with [`limit`](#limit) to control pagination of API call results. Must be a positive integer or 0. Default value is 0.
 
-El [`start`](#start) indica el "número de resultados después del inicio" que se saltea el buscador para el armado de la respuesta.
-
-
-
-
+[`start`](#start) parameter indicates the "number of periods after [`start_date`](#start_date)" (or the "number of periods before [`end_date`](#end_date)", depending on *asc* or *desc* sorting criteria specified on [`sort`](#sort) parameter) that should be skipped from beginning or end of the series before staring to return values.

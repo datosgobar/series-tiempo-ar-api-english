@@ -12,7 +12,7 @@ List of projects using, extending or documenting the Time Series API.
 * [fmgarciadiaz/PortalHacienda](https://github.com/fmgarciadiaz/PortalHacienda): R interface to use the API by [@fergd1978](https://twitter.com/fergd1978).
 * [http://series-de-tiempo-ar-graficos.netlify.com/](http://series-de-tiempo-ar-graficos.netlify.com/): Web interface to search and visualize series by [@SoyYoConBonete_](https://twitter.com/SoyYoConBonete_).
 
-## Contacto
+## Contact us
 
 ¿Did you develop a library or project using the API? We [invite you to contact us](https://twitter.com/datosgobar) so we can add it to the list.
 

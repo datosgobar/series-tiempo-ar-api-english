@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0, mkdocs-material-3.0.3">
     
     
       
@@ -60,8 +60,8 @@
     <script src="../js/extra.js"></script>
 
     
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../#integracion-con-planillas-de-calculo" tabindex="1" class="md-skip">
+      <a href="../#integrate-api-in-a-spreadsheet" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -459,30 +459,34 @@
                   <a href="https://github.com/datosgobar/series-tiempo-ar-api/edit/master/docs/spreadsheet_integration.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="integracion-con-planillas-de-calculo">Integración con planillas de cálculo</h1>
+                <h1 id="integrate-api-in-a-spreadsheet">Integrate API in a spreadsheet</h1>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 <ul>
-<li><a href="#google-drive">Google Drive</a></li>
+<li><a href="#google-drive">Google Drive</a><ul>
 <li><a href="#1-modify-regional-configuration">1. Modify regional configuration</a></li>
 <li><a href="#2-import-data-to-the-spreadsheet">2. Import data to the spreadsheet</a></li>
 <li><a href="#3-choose-date-format">3. Choose date format</a></li>
 <li><a href="#4-modify-api-call-url">4. Modify API call URL</a></li>
-<li><a href="#excel">Excel</a></li>
+</ul>
+</li>
+<li><a href="#excel">Excel</a><ul>
 <li><a href="#1-generate-a-query-from-url">1. Generate a query from URL</a></li>
 <li><a href="#2-edit-original-file-codification">2. Edit original file codification</a></li>
 <li><a href="#3-edit-column-types">3. Edit column types</a></li>
 <li><a href="#4-modify-regional-configuration">4. Modify regional configuration</a></li>
 <li><a href="#5-save-modifications-and-load-the-query">5. Save modifications and load the query</a></li>
 </ul>
+</li>
+</ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 <h2 id="google-drive">Google Drive</h2>
 <h3 id="1-modify-regional-configuration">1. Modify regional configuration</h3>
 <p>API generates CSV files using “.” as a decimal character. You should choose "United States" regional configuration so Google Spreadsheet reads properly the file, or any other compatible region.</p>
-<p>Alternatively, you can ask the API to change the decimal character using <a href="api_reference.md#decimal"><code>decimal</code></a> parameter.</p>
+<p>Alternatively, you can ask the API to change the decimal character using <a href="../reference/api_reference/#decimal"><code>decimal</code></a> parameter.</p>
 <p><img alt="" src="../assets/google_drive_letra_1.png" />
 <br><br>
 <img alt="" src="../assets/google_drive_letra_2.png" />
@@ -525,7 +529,7 @@
 <br><br>
 <img alt="" src="../assets/excel_letra_7.png" /></p>
 <h3 id="3-edit-column-types">3. Edit column types</h3>
-<p>Excel can read wrong column types if the decimal separator is not ".". You should use advanced editor to correct column data types. (You can also use <a href="api_reference.md#decimal"><code>decimal</code></a> parameter to change the decimal separator)</p>
+<p>Excel can read wrong column types if the decimal separator is not ".". You should use advanced editor to correct column data types. (You can also use <a href="../reference/api_reference/#decimal"><code>decimal</code></a> parameter to change the decimal separator)</p>
 <ul>
 <li>“indice_tiempo” column data type should be “type date”</li>
 <li>Rest of the columns, (containing series) should be “type number”</li>
@@ -538,7 +542,7 @@
 <br><br>
 <img alt="" src="../assets/excel_letra_11.png" /></p>
 <h3 id="4-modify-regional-configuration">4. Modify regional configuration</h3>
-<p>In the same advanced editor, regional configurations should be changed at the end to be “en-US” and accepts “.” as a decimal separator (unless <a href="api_reference.md#decimal"><code>decimal</code></a> parameter is used).</p>
+<p>In the same advanced editor, regional configurations should be changed at the end to be “en-US” and accepts “.” as a decimal separator (unless <a href="../reference/api_reference/#decimal"><code>decimal</code></a> parameter is used).</p>
 <p><img alt="" src="../assets/excel_letra_12.png" />
 <br><br>
 <img alt="" src="../assets/excel_letra_13.png" /></p>
@@ -623,7 +627,7 @@
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-91435482-1","https://datosgobar.github.io/series-tiempo-ar-api/"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-91435482-1","https://datosgobar.github.io/series-tiempo-ar-api-english/"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

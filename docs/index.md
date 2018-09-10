@@ -1,4 +1,4 @@
-# Time Series API of the Republic of Argentina
+# Time Series API of Argentina
 
 The Time Series API of Argentina, allows to query indicators with chronological evolution published in open formats by organisms of the National Public Administration.
 

@@ -1,20 +1,20 @@
-# Integración con planillas de cálculo
+# Integrate API in a spreadsheet
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
 - [Google Drive](#google-drive)
-  - [1. Modify regional configuration](#1-modify-regional-configuration)
-  - [2. Import data to the spreadsheet](#2-import-data-to-the-spreadsheet)
-  - [3. Choose date format](#3-choose-date-format)
-  - [4. Modify API call URL](#4-modify-api-call-url)
+    - [1. Modify regional configuration](#1-modify-regional-configuration)
+    - [2. Import data to the spreadsheet](#2-import-data-to-the-spreadsheet)
+    - [3. Choose date format](#3-choose-date-format)
+    - [4. Modify API call URL](#4-modify-api-call-url)
 - [Excel](#excel)
-  - [1. Generate a query from URL](#1-generate-a-query-from-url)
-  - [2. Edit original file codification](#2-edit-original-file-codification)
-  - [3. Edit column types](#3-edit-column-types)
-  - [4. Modify regional configuration](#4-modify-regional-configuration)
-  - [5. Save modifications and load the query](#5-save-modifications-and-load-the-query)
+    - [1. Generate a query from URL](#1-generate-a-query-from-url)
+    - [2. Edit original file codification](#2-edit-original-file-codification)
+    - [3. Edit column types](#3-edit-column-types)
+    - [4. Modify regional configuration](#4-modify-regional-configuration)
+    - [5. Save modifications and load the query](#5-save-modifications-and-load-the-query)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

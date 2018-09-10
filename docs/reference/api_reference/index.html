@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0, mkdocs-material-3.0.3">
     
     
       
@@ -60,8 +60,8 @@
     <script src="../../js/extra.js"></script>
 
     
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
@@ -469,7 +469,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 <ul>
-<li><a href="#tabla-de-parametros">Tabla de parámetros</a></li>
+<li><a href="#parameters">Parameters</a><ul>
 <li><a href="#ids"><code>ids</code></a></li>
 <li><a href="#representation_mode"><code>representation_mode</code></a></li>
 <li><a href="#collapse"><code>collapse</code></a></li>
@@ -486,9 +486,11 @@
 <li><a href="#sep"><code>sep</code></a></li>
 <li><a href="#flatten"><code>flatten</code></a></li>
 </ul>
+</li>
+</ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-<h2 id="table-of-parameters">Table of parameters</h2>
+<h2 id="parameters">Parameters</h2>
 <table>
     <tr>
         <th>Name</th>
@@ -632,108 +634,108 @@ ids=2.4_DGI_1993_T_19:end_of_period:percent_change,134.2_B_0_0_6:sum:change
 <li><em>percent_change</em>: Returns percentage variation of the value in the t period and t-1 period.</li>
 <li><em>percent_change_a_year_ago</em>: Returns percentage variation between t period value and the same t period, a year ago.</li>
 </ul>
-<p>Available transformation functions in <a href="#representation_mode"><code>representation_mode</code></a> can also be specified for <strong>individual series</strong> usring <code>:percent_change</code> notation, together with series id:</p>
+<p>Available transformation functions in <a href="#representation_mode"><code>representation_mode</code></a> can also be specified for <strong>individual series</strong> using <code>:percent_change</code> notation, together with series id:</p>
 <div class="admonition note">
-<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change">EMAE Construcción. Variación porcentual de valores mensuales, respecto del período anterior.</a></p>
+<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change">Construction Economic Activity. Percentage variation of monthly values, period to period.</a></p>
 <p><a href="https://apis.datos.gob.ar/series/api/series/?limit=1000&amp;ids=11.3_VMATC_2004_M_12:percent_change"><code>https://apis.datos.gob.ar/series/api/series/?limit=1000&amp;ids=11.3_VMATC_2004_M_12:percent_change</code></a></p>
 </div>
 <div class="admonition note">
-<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago">EMAE Construcción (variación porcentual período a período), EMAE Construcción (variación porcentual interanual). Valores mensuales.</a></p>
+<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago">Construction Economic Activity (percentage variation period to period), Construction Economic Activity (percentage variation year to year). Monthly values.</a></p>
 <p><a href="https://apis.datos.gob.ar/series/api/series/?limit=1000&amp;ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago"><code>https://apis.datos.gob.ar/series/api/series/?limit=1000&amp;ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago</code></a></p>
 </div>
-<p>El parámetro <a href="#representation_mode"><code>representation_mode</code></a> seguirá afectando a todas las series para las cuales no se especifique individualmente una función de transformación.</p>
+<p><a href="#representation_mode"><code>representation_mode</code></a> parameter will continue to affect all series where no individual representation mode has been specified.</p>
 <h3 id="collapse"><code>collapse</code></h3>
-<p>El parámetro <a href="#collapse"><code>collapse</code></a> modifica la frecuencia de muestreo de los datos de la serie o las series solicitadas. Debe usarse en combinación con <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> para indicar una funnción de agregación temporal, cuando corresponda.</p>
-<p>Las opciones disponibles son:</p>
+<p><a href="#collapse"><code>collapse</code></a> parameter modifies sample frequency of series of the query. It must be used in combination with <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> to specify a temporal aggregation function, when necessary.</p>
+<p>Available options are:</p>
 <ul>
-<li><em>year</em>: Muestra datos agregados anualmente.</li>
-<li><em>quarter</em>: Muestra datos agregados trimestralmente.</li>
-<li><em>month</em>: Muestra datos agregados mensualmente.</li>
-<li><em>week</em>: Muestra datos agregados semanalmente.</li>
-<li><em>day</em>: Muestra datos agregados diariamente.</li>
+<li><em>year</em>: Show data yearly aggregated.</li>
+<li><em>quarter</em>: Show data quarterly aggregated.</li>
+<li><em>month</em>: Show data monthly aggregated.</li>
+<li><em>week</em>: Show data weekly aggregated.</li>
+<li><em>day</em>: Show data daily aggregated.</li>
 </ul>
-<p>Si no se indica, se retornan los datos con la <strong>frecuencia original de la serie</strong>.</p>
-<p>Si se solicitan <strong>múltiples series de distintas frecuencias</strong>, se utilizará la menor frecuencia de todas ellas (Ej.: si se solicitan a la vez una serie diaria, una mensual y una trimestral, se convertirán todas las series a la frecuencia trimestral).</p>
-<p>Si la granularidad temporal solicitada en el valor de <a href="#collapse"><code>collapse</code></a> es menor a la granularidad propia de alguna de las series solicitadas, la consulta devolverá un error.</p>
-<p>El parámetro <a href="#collapse"><code>collapse</code></a> afecta globalmente a todas las series seleccionadas por el parámetro <a href="#ids"><code>ids</code></a> en la llamada.</p>
+<p>If not specified, data of a single series query is return using <strong>original frequency of the serie</strong>.</p>
+<p>If <strong>multiples series of different frequencies are being called at the same time</strong>, the lowest frequency of all of them will be used (ie.: if you ask for  daily, monthly and quarterly series in the same call, they will all be converted to quarterly frequency).</p>
+<p>If you ask for a higher frequency level in <a href="#collapse"><code>collapse</code></a> than the lowest one available between asked series, the query will return an error.</p>
+<p><a href="#collapse"><code>collapse</code></a> parameter affects globally to all series selected from the <a href="#ids"><code>ids</code></a> parameter in the API call.</p>
 <h3 id="collapse_aggregation"><code>collapse_aggregation</code></h3>
-<p>El parámetro <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> indica la función de agregación temporal que debe usarse para homogeneizar la frecuencia temporal de todas las series solicitadas (Ej.: qué operación realizar para convertir una serie mensual en anual).</p>
-<p>Esta función de agregación actuará sobre:</p>
+<p><a href="#collapse_aggregation"><code>collapse_aggregation</code></a> parameter indicates the temporal aggregation function that must be used to make all the series in the call have the same frequency (ie.: what operation should be used to convert a monthly series in a yearly series).</p>
+<p>This aggregation function will act over data of:</p>
 <ul>
-<li>Las series agrupadas de mayor granularidad temporal (frecuencia más alta) que la granularidad indicada por el parámetro <a href="#collapse"><code>collapse</code></a></li>
-<li>En caso de que no se especifique el parámetro <a href="#collapse"><code>collapse</code></a>, las series agrupadas de mayor granularidad temporal que la de la serie de menor frecuencia temporal.</li>
+<li>Series with higher original aggregation level (highest frequency) than the one specified in <a href="#collapse"><code>collapse</code></a> parameter.</li>
+<li>In case <a href="#collapse"><code>collapse</code></a> parameter is not specified, series of higher aggregation level than the one of the series with the lowest temporal aggregation level of all.</li>
 </ul>
-<p>Los valores disponibles para el parámetro son:</p>
+<p>Available options are:</p>
 <ul>
-<li><em>avg</em>: Realiza el promedio de todos los valores agrupados. Es la opción por defecto si no se indica valor para <a href="#collapse_aggregation"><code>collapse_aggregation</code></a>.</li>
-<li><em>sum</em>: Suma todos los valores agrupados.</li>
-<li><em>end_of_period</em>: Último valor del período.</li>
-<li><em>min</em>: Mínimo entre los valores agrupados.</li>
-<li><em>max</em>: Máximo entre los valores agrupados.</li>
+<li><em>avg</em>: Calculates the average of all values. This is the default option if no <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> parameter is specified.</li>
+<li><em>sum</em>: Sum all values.</li>
+<li><em>end_of_period</em>: Last value of the aggregated period.</li>
+<li><em>min</em>: Minimum value of the aggregated period.</li>
+<li><em>max</em>: Maximum value of the aggregated period.</li>
 </ul>
-<p>Las funciones de agregación temporal disponibles en <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> también pueden especificarse para <strong>series individuales</strong> usando la notación <code>:sum</code> junto al id de la serie:</p>
+<p>Temporal aggregation functions available in <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> parameter can also be specified for <strong>individual series</strong> using <code>:sum</code> notation together with series id:</p>
 <div class="admonition note">
-<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&amp;collapse=year">Cobro de servicios de turismo y viajes. Valores mensuales promediados y sumados por año.</a></p>
+<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&amp;collapse=year">Payment of tourism services and trips. Monthly values averaged and sum by year.</a></p>
 <p><a href="https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&amp;collapse=year"><code>https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&amp;collapse=year</code></a></p>
 </div>
-<p>El parámetro <a href="#collapse_aggregation"><code>collapse_aggregation</code></a> seguirá afectando a todas las series para las cuales no se especifique individualmente una función de agregación temporal.</p>
+<p><a href="#collapse_aggregation"><code>collapse_aggregation</code></a> parameter will continue to affect all series that have no temporal aggregation function individually specified.</p>
 <div class="admonition note">
-<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&amp;collapse=year&amp;collapse_aggregation=sum">Cobro de servicios de turismo y viajes. Valores mensuales promediados y sumados por año.</a></p>
+<p class="admonition-title"><a href="http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&amp;collapse=year&amp;collapse_aggregation=sum">Payment of tourism services and trips. Monthly values averaged and sum by year.</a></p>
 <p><a href="https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&amp;collapse=year&amp;collapse_aggregation=sum"><code>https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&amp;collapse=year&amp;collapse_aggregation=sum</code></a></p>
 </div>
 <h3 id="limit"><code>limit</code></h3>
-<p>Este parámetro es utilizado junto a <a href="#start"><code>start</code></a> para controlar el paginado de los resultados devueltos por la API. Debe especificarse un número entero positivo, no mayor que 1000, ya que esa es la cantidad máxima de resultados devueltos por la API. El valor por defecto si no se especifica valor alguno es 100.</p>
+<p>Parameter used together with <a href="#start"><code>start</code></a> to control pagination of API call results. Must be a positive integer not greater than 1000. Default value is 100.</p>
 <h3 id="start"><code>start</code></h3>
-<p>Este parámetro es utilizado junto a <a href="#limit"><code>limit</code></a> para controlar el paginado de los resultados devueltos por la API. Debe especificarse un número entero positivo o 0. El valor por defecto si no se especifica valor alguno es 0.</p>
-<p>El <a href="#start"><code>start</code></a> indica el "número de períodos después de <a href="#start_date"><code>start_date</code></a>" (o el "número de períodos antes de <a href="#end_date"><code>end_date</code></a>", dependiendo del ordenamiento <em>asc</em> o <em>desc</em> del parámetro <a href="#sort"><code>sort</code></a>) que se saltean desde el comienzo o el final de la serie antes de empezar a devolver valores.</p>
+<p>Parameter used together with <a href="#limit"><code>limit</code></a> to control pagination of API call results. Must be a positive integer or 0. Default value is 0.</p>
+<p><a href="#start"><code>start</code></a> parameter indicates the "number of periods after <a href="#start_date"><code>start_date</code></a>" (or the "number of periods before <a href="#end_date"><code>end_date</code></a>", depending on <em>asc</em> or <em>desc</em> sorting criteria specified on <a href="#sort"><code>sort</code></a> parameter) that should be skipped from beginning or end of the series before staring to return values.</p>
 <h3 id="start_date"><code>start_date</code></h3>
-<p>El parámetro <a href="#start_date"><code>start_date</code></a> indica la fecha menor a partir de la cual se comenzarán a recolectar datos para la respuesta. Los valores cuyo índice de tiempo coincida con el valor de <a href="#start_date"><code>start_date</code></a> se incluirán en el resultado retornado. Se utilizará como filtro sobre el índice de tiempo de las series de datos.</p>
+<p><a href="#start_date"><code>start_date</code></a> parameter indicates the less recent date where API results should start, when data is available. Values where time index is equal to <a href="#start_date"><code>start_date</code></a> value will be included. It is a temporal filter over time index of all series in the API call.</p>
 <h3 id="end_date"><code>end_date</code></h3>
-<p>El parámetro <a href="#end_date"><code>end_date</code></a> indica la fecha mayor hasta la cual se recolectarán datos para la respuesta. Los valores cuyo índice de tiempo coincida con el valor de <a href="#end_date"><code>end_date</code></a> se incluirán en el resultado retornado. Se utilizará como filtro sobre el índice de tiempo de las series de datos.</p>
+<p><a href="#end_date"><code>end_date</code></a> parameter indicates the most recent date where API results should end, when data is available. Values where time index is equal to <a href="#end_date"><code>end_date</code></a> will be included. It is a temporal filter over time index of all series in the API call.</p>
 <h3 id="format"><code>format</code></h3>
-<p>Especifica el formato de la respuesta, siendo <em>json</em> el valor por defecto.</p>
-<p>Las opciones disponibles son:</p>
+<p>Specifies the format of the results. JSON is the default.</p>
+<p>Available options are:</p>
 <ul>
-<li><em>json</em>: Devuelve un objeto json con datos y metadatos de las series.</li>
-<li><em>csv</em>: Devuelve las series seleccionadas en formato separado por comas. Este tipo de formato no incluye metadatos de las series seleccionadas.</li>
+<li><em>json</em>: Returns a JSON object with data and metadata of the series.</li>
+<li><em>csv</em>: Returns selected series in a comma separated format. It does not include metadata.</li>
 </ul>
 <h3 id="header"><code>header</code></h3>
-<p>Especifica los atributos de las series a utilizar como <em>headers</em> (cabeceras) de las columnas del archivo CSV generado. Por defecto usa <em>titles</em>, que son los títulos de las series.</p>
-<p>Las opciones disponibles son:</p>
+<p>Specifies attributes of series to be used as <em>headers</em> of the CSV file columns. Uses <em>titles</em> as default, being the shortest human readable titles of the series.</p>
+<p>Available options are:</p>
 <ul>
-<li><em>titles</em>: Títulos de las series, por ejemplo <strong>oferta_global_pib</strong> (default).</li>
-<li><em>ids</em>: Identificadores únicos de las series, los mismos pasados al parámetro <code>ids</code>.</li>
-<li><em>descriptions</em>: Descripciones completas de las series, por ejemplo <strong>Plazo fijo entre 60-89 días en millones de pesos. Categoría II-VI</strong></li>
+<li><em>titles</em>: Series titles as <strong>oferta_global_pib</strong> (default).</li>
+<li><em>ids</em>: Series unique identifiers. The same values passed in <code>ids</code> parameter.</li>
+<li><em>descriptions</em>: Complete descriptions of the series as <strong>Plazo fijo entre 60-89 días en millones de pesos. Categoría II-VI</strong>.</li>
 </ul>
 <h3 id="sort"><code>sort</code></h3>
-<p>Especifica el orden temporal de los resultados devueltos, siendo <em>asc</em> el valor por defecto.</p>
-<p>Las opciones disponibles son:</p>
+<p>Specifies the sorting direction in which values are returned. <em>asc</em> is the default value.</p>
+<p>Available options are:</p>
 <ul>
-<li><em>asc</em>: Se devuelven los valores más antiguos primero (default).</li>
-<li><em>desc</em>: Se devuelven los valores más recientes primero.</li>
+<li><em>asc</em>: Less recent values first (default).</li>
+<li><em>desc</em>: Most recent values first.</li>
 </ul>
 <h3 id="metadata"><code>metadata</code></h3>
-<p>Especifica el nivel de detalle de metadatos requerido por el usuario, siendo <em>simple</em> el valor por defecto. Sólo aplica cuando <code>format=json</code>.</p>
-<p>Las opciones disponibles son:</p>
+<p>Specifies the level of metadata detail required by the user, being <em>simple</em> the default. Only applies when <code>format=json</code>.</p>
+<p>Available options are:</p>
 <ul>
-<li><em>none</em>: No se devuelven metadatos, sólo datos.</li>
-<li><em>only</em>: No se devuelven datos, sólo metadatos.</li>
-<li><em>simple</em>: Se devuelven los metadatos más importantes para comprender y utilizar las series (default).</li>
-<li><em>full</em>: Se devuelven todos los metadatos disponibles que tengan relación con cada serie.</li>
+<li><em>none</em>: No metadata is returned, only data.</li>
+<li><em>only</em>: No data is returned, only metadata.</li>
+<li><em>simple</em>: Only important metadata to understand and use the series is returned (default).</li>
+<li><em>full</em>: All metadata available is returned.</li>
 </ul>
 <h3 id="decimal"><code>decimal</code></h3>
-<p>Especifica el caracter utilizado para los números decimales, siendo <em>.</em> el valor por defecto. Sólo aplica cuando <code>format=csv</code>.</p>
-<p>Las opciones disponibles son:</p>
+<p>Specifies character used for decimal numbers. <em>.</em> is the default. Only applies when <code>format=csv</code>.</p>
+<p>Available options are:</p>
 <ul>
-<li><em>,</em>: Coma.</li>
-<li><em>.</em>: Punto.</li>
+<li><em>,</em>: Comma.</li>
+<li><em>.</em>: Dot.</li>
 </ul>
 <h3 id="sep"><code>sep</code></h3>
-<p>Especifica el caracter separador de valores, siendo <em>,</em> el valor por defecto. Sólo aplica cuando <code>format=csv</code>.</p>
-<p>Se puede utilizar cualquier caracter UTF-8, si bien se recomienda preservar el uso de la coma en la mayoría de los casos.</p>
+<p>Specifies the character that separates values in a CSV file. <em>,</em> is the default. Only applies when <code>format=csv</code>.</p>
+<p>Any UTF-8 character can be used, but it is highly recommended to keep the default (comma) in most cases.</p>
 <h3 id="flatten"><code>flatten</code></h3>
-<p>Especifica si la respuesta de los metadatos de las series pedidas deberían devolverse en una jerarquía <em>plana</em>.</p>
-<p>Cuando el parámetro no es incluido, la respuesta tiene la siguiente estructura:</p>
+<p>Specifies if the metadata results should be returned with a flat hierarchy.</p>
+<p>When parameter is not included, API call result has a nested structure:</p>
 <div class="codehilite"><pre><span></span>    {
         &quot;catalog&quot;: [&lt;catalog_meta&gt;],
         &quot;dataset&quot;: [&lt;dataset_meta&gt;],
@@ -743,12 +745,12 @@ ids=2.4_DGI_1993_T_19:end_of_period:percent_change,134.2_B_0_0_6:sum:change
 </pre></div>
 
 
-<p>Una consulta con parámetro <code>flatten</code> incluido tendrá la siguiente respuesta de metadatos:</p>
+<p>When <code>flatten</code> is included, API call metadata result has a flat structure:</p>
 <div class="codehilite"><pre><span></span>    {
         catalog_meta1: ...,
         catalog_meta2: ...,
         dataset_meta1: ...,
-        &lt;nivel&gt;_&lt;meta_key&gt;: &lt;meta_value&gt;
+        &lt;level&gt;_&lt;meta_key&gt;: &lt;meta_value&gt;
         ...
     }
 </pre></div>
@@ -830,7 +832,7 @@ ids=2.4_DGI_1993_T_19:end_of_period:percent_change,134.2_B_0_0_6:sum:change
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-91435482-1","https://datosgobar.github.io/series-tiempo-ar-api/"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-91435482-1","https://datosgobar.github.io/series-tiempo-ar-api-english/"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

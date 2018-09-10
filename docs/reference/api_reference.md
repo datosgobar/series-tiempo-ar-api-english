@@ -8,26 +8,26 @@ The `/series` endpoint allows **obtaining data and metadata** of one or more ser
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
-- [Tabla de parámetros](#tabla-de-parametros)
-  - [`ids`](#ids)
-  - [`representation_mode`](#representation_mode)
-  - [`collapse`](#collapse)
-  - [`collapse_aggregation`](#collapse_aggregation)
-  - [`limit`](#limit)
-  - [`start`](#start)
-  - [`start_date`](#start_date)
-  - [`end_date`](#end_date)
-  - [`format`](#format)
-  - [`header`](#header)
-  - [`sort`](#sort)
-  - [`metadata`](#metadata)
-  - [`decimal`](#decimal)
-  - [`sep`](#sep)
-  - [`flatten`](#flatten)
+- [Parameters](#parameters)
+    - [`ids`](#ids)
+    - [`representation_mode`](#representation_mode)
+    - [`collapse`](#collapse)
+    - [`collapse_aggregation`](#collapse_aggregation)
+    - [`limit`](#limit)
+    - [`start`](#start)
+    - [`start_date`](#start_date)
+    - [`end_date`](#end_date)
+    - [`format`](#format)
+    - [`header`](#header)
+    - [`sort`](#sort)
+    - [`metadata`](#metadata)
+    - [`decimal`](#decimal)
+    - [`sep`](#sep)
+    - [`flatten`](#flatten)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Table of parameters
+## Parameters
 
 <table>
     <tr>
@@ -180,142 +180,142 @@ Available representation modes are:
 * *percent_change*: Returns percentage variation of the value in the t period and t-1 period.
 * *percent_change_a_year_ago*: Returns percentage variation between t period value and the same t period, a year ago.
 
-Available transformation functions in [`representation_mode`](#representation_mode) can also be specified for **individual series** usring `:percent_change` notation, together with series id:
+Available transformation functions in [`representation_mode`](#representation_mode) can also be specified for **individual series** using `:percent_change` notation, together with series id:
 
-!!! note "[EMAE Construcción. Variación porcentual de valores mensuales, respecto del período anterior.](http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change)"
+!!! note "[Construction Economic Activity. Percentage variation of monthly values, period to period.](http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change)"
     [`https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change`](https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change)
 
-!!! note "[EMAE Construcción (variación porcentual período a período), EMAE Construcción (variación porcentual interanual). Valores mensuales.](http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago)"
+!!! note "[Construction Economic Activity (percentage variation period to period), Construction Economic Activity (percentage variation year to year). Monthly values.](http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago)"
     [`https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago`](https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago)
 
-El parámetro [`representation_mode`](#representation_mode) seguirá afectando a todas las series para las cuales no se especifique individualmente una función de transformación.
+[`representation_mode`](#representation_mode) parameter will continue to affect all series where no individual representation mode has been specified.
 
 ### `collapse`
 
-El parámetro [`collapse`](#collapse) modifica la frecuencia de muestreo de los datos de la serie o las series solicitadas. Debe usarse en combinación con [`collapse_aggregation`](#collapse_aggregation) para indicar una funnción de agregación temporal, cuando corresponda.
+[`collapse`](#collapse) parameter modifies sample frequency of series of the query. It must be used in combination with [`collapse_aggregation`](#collapse_aggregation) to specify a temporal aggregation function, when necessary.
 
-Las opciones disponibles son:
+Available options are:
 
-* *year*: Muestra datos agregados anualmente.
-* *quarter*: Muestra datos agregados trimestralmente.
-* *month*: Muestra datos agregados mensualmente.
-* *week*: Muestra datos agregados semanalmente.
-* *day*: Muestra datos agregados diariamente.
+* *year*: Show data yearly aggregated.
+* *quarter*: Show data quarterly aggregated.
+* *month*: Show data monthly aggregated.
+* *week*: Show data weekly aggregated.
+* *day*: Show data daily aggregated.
 
-Si no se indica, se retornan los datos con la **frecuencia original de la serie**.
+If not specified, data of a single series query is return using **original frequency of the serie**.
 
-Si se solicitan **múltiples series de distintas frecuencias**, se utilizará la menor frecuencia de todas ellas (Ej.: si se solicitan a la vez una serie diaria, una mensual y una trimestral, se convertirán todas las series a la frecuencia trimestral).
+If **multiples series of different frequencies are being called at the same time**, the lowest frequency of all of them will be used (ie.: if you ask for  daily, monthly and quarterly series in the same call, they will all be converted to quarterly frequency).
 
-Si la granularidad temporal solicitada en el valor de [`collapse`](#collapse) es menor a la granularidad propia de alguna de las series solicitadas, la consulta devolverá un error.
+If you ask for a higher frequency level in [`collapse`](#collapse) than the lowest one available between asked series, the query will return an error.
 
-El parámetro [`collapse`](#collapse) afecta globalmente a todas las series seleccionadas por el parámetro [`ids`](#ids) en la llamada.
+[`collapse`](#collapse) parameter affects globally to all series selected from the [`ids`](#ids) parameter in the API call.
 
 ### `collapse_aggregation`
 
-El parámetro [`collapse_aggregation`](#collapse_aggregation) indica la función de agregación temporal que debe usarse para homogeneizar la frecuencia temporal de todas las series solicitadas (Ej.: qué operación realizar para convertir una serie mensual en anual).
+[`collapse_aggregation`](#collapse_aggregation) parameter indicates the temporal aggregation function that must be used to make all the series in the call have the same frequency (ie.: what operation should be used to convert a monthly series in a yearly series).
 
-Esta función de agregación actuará sobre:
+This aggregation function will act over data of:
 
-* Las series agrupadas de mayor granularidad temporal (frecuencia más alta) que la granularidad indicada por el parámetro [`collapse`](#collapse)
-* En caso de que no se especifique el parámetro [`collapse`](#collapse), las series agrupadas de mayor granularidad temporal que la de la serie de menor frecuencia temporal.
+* Series with higher original aggregation level (highest frequency) than the one specified in [`collapse`](#collapse) parameter.
+* In case [`collapse`](#collapse) parameter is not specified, series of higher aggregation level than the one of the series with the lowest temporal aggregation level of all.
 
-Los valores disponibles para el parámetro son:
+Available options are:
 
-* *avg*: Realiza el promedio de todos los valores agrupados. Es la opción por defecto si no se indica valor para [`collapse_aggregation`](#collapse_aggregation).
-* *sum*: Suma todos los valores agrupados.
-* *end_of_period*: Último valor del período.
-* *min*: Mínimo entre los valores agrupados.
-* *max*: Máximo entre los valores agrupados.
+* *avg*: Calculates the average of all values. This is the default option if no [`collapse_aggregation`](#collapse_aggregation) parameter is specified.
+* *sum*: Sum all values.
+* *end_of_period*: Last value of the aggregated period.
+* *min*: Minimum value of the aggregated period.
+* *max*: Maximum value of the aggregated period.
 
-Las funciones de agregación temporal disponibles en [`collapse_aggregation`](#collapse_aggregation) también pueden especificarse para **series individuales** usando la notación `:sum` junto al id de la serie:
+Temporal aggregation functions available in [`collapse_aggregation`](#collapse_aggregation) parameter can also be specified for **individual series** using `:sum` notation together with series id:
 
-!!! note "[Cobro de servicios de turismo y viajes. Valores mensuales promediados y sumados por año.](http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year)"
+!!! note "[Payment of tourism services and trips. Monthly values averaged and sum by year.](http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year)"
 
     [`https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year`](https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year)
 
-El parámetro [`collapse_aggregation`](#collapse_aggregation) seguirá afectando a todas las series para las cuales no se especifique individualmente una función de agregación temporal.
+[`collapse_aggregation`](#collapse_aggregation) parameter will continue to affect all series that have no temporal aggregation function individually specified.
 
-!!! note "[Cobro de servicios de turismo y viajes. Valores mensuales promediados y sumados por año.](http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum)"
+!!! note "[Payment of tourism services and trips. Monthly values averaged and sum by year.](http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum)"
 
     [`https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum`](https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum)
 
 ### `limit`
 
-Este parámetro es utilizado junto a [`start`](#start) para controlar el paginado de los resultados devueltos por la API. Debe especificarse un número entero positivo, no mayor que 1000, ya que esa es la cantidad máxima de resultados devueltos por la API. El valor por defecto si no se especifica valor alguno es 100.
+Parameter used together with [`start`](#start) to control pagination of API call results. Must be a positive integer not greater than 1000. Default value is 100.
 
 ### `start`
 
-Este parámetro es utilizado junto a [`limit`](#limit) para controlar el paginado de los resultados devueltos por la API. Debe especificarse un número entero positivo o 0. El valor por defecto si no se especifica valor alguno es 0.
+Parameter used together with [`limit`](#limit) to control pagination of API call results. Must be a positive integer or 0. Default value is 0.
 
-El [`start`](#start) indica el "número de períodos después de [`start_date`](#start_date)" (o el "número de períodos antes de [`end_date`](#end_date)", dependiendo del ordenamiento *asc* o *desc* del parámetro [`sort`](#sort)) que se saltean desde el comienzo o el final de la serie antes de empezar a devolver valores.
+[`start`](#start) parameter indicates the "number of periods after [`start_date`](#start_date)" (or the "number of periods before [`end_date`](#end_date)", depending on *asc* or *desc* sorting criteria specified on [`sort`](#sort) parameter) that should be skipped from beginning or end of the series before staring to return values.
 
 ### `start_date`
 
-El parámetro [`start_date`](#start_date) indica la fecha menor a partir de la cual se comenzarán a recolectar datos para la respuesta. Los valores cuyo índice de tiempo coincida con el valor de [`start_date`](#start_date) se incluirán en el resultado retornado. Se utilizará como filtro sobre el índice de tiempo de las series de datos.
+[`start_date`](#start_date) parameter indicates the less recent date where API results should start, when data is available. Values where time index is equal to [`start_date`](#start_date) value will be included. It is a temporal filter over time index of all series in the API call.
 
 ### `end_date`
 
-El parámetro [`end_date`](#end_date) indica la fecha mayor hasta la cual se recolectarán datos para la respuesta. Los valores cuyo índice de tiempo coincida con el valor de [`end_date`](#end_date) se incluirán en el resultado retornado. Se utilizará como filtro sobre el índice de tiempo de las series de datos.
+[`end_date`](#end_date) parameter indicates the most recent date where API results should end, when data is available. Values where time index is equal to [`end_date`](#end_date) will be included. It is a temporal filter over time index of all series in the API call.
 
 ### `format`
 
-Especifica el formato de la respuesta, siendo *json* el valor por defecto.
+Specifies the format of the results. JSON is the default.
 
-Las opciones disponibles son:
+Available options are:
 
-* *json*: Devuelve un objeto json con datos y metadatos de las series.
-* *csv*: Devuelve las series seleccionadas en formato separado por comas. Este tipo de formato no incluye metadatos de las series seleccionadas.
+* *json*: Returns a JSON object with data and metadata of the series.
+* *csv*: Returns selected series in a comma separated format. It does not include metadata.
 
 ### `header`
 
-Especifica los atributos de las series a utilizar como *headers* (cabeceras) de las columnas del archivo CSV generado. Por defecto usa *titles*, que son los títulos de las series.
+Specifies attributes of series to be used as *headers* of the CSV file columns. Uses *titles* as default, being the shortest human readable titles of the series.
 
-Las opciones disponibles son:
+Available options are:
 
-* *titles*: Títulos de las series, por ejemplo **oferta_global_pib** (default).
-* *ids*: Identificadores únicos de las series, los mismos pasados al parámetro `ids`.
-* *descriptions*: Descripciones completas de las series, por ejemplo **Plazo fijo entre 60-89 días en millones de pesos. Categoría II-VI**
+* *titles*: Series titles as **oferta_global_pib** (default).
+* *ids*: Series unique identifiers. The same values passed in `ids` parameter.
+* *descriptions*: Complete descriptions of the series as **Plazo fijo entre 60-89 días en millones de pesos. Categoría II-VI**.
 
 ### `sort`
 
-Especifica el orden temporal de los resultados devueltos, siendo *asc* el valor por defecto.
+Specifies the sorting direction in which values are returned. *asc* is the default value.
 
-Las opciones disponibles son:
+Available options are:
 
-* *asc*: Se devuelven los valores más antiguos primero (default).
-* *desc*: Se devuelven los valores más recientes primero.
+* *asc*: Less recent values first (default).
+* *desc*: Most recent values first.
 
 ### `metadata`
 
-Especifica el nivel de detalle de metadatos requerido por el usuario, siendo *simple* el valor por defecto. Sólo aplica cuando `format=json`.
+Specifies the level of metadata detail required by the user, being *simple* the default. Only applies when `format=json`.
 
-Las opciones disponibles son:
+Available options are:
 
-* *none*: No se devuelven metadatos, sólo datos.
-* *only*: No se devuelven datos, sólo metadatos.
-* *simple*: Se devuelven los metadatos más importantes para comprender y utilizar las series (default).
-* *full*: Se devuelven todos los metadatos disponibles que tengan relación con cada serie.
+* *none*: No metadata is returned, only data.
+* *only*: No data is returned, only metadata.
+* *simple*: Only important metadata to understand and use the series is returned (default).
+* *full*: All metadata available is returned.
 
 ### `decimal`
 
-Especifica el caracter utilizado para los números decimales, siendo *.* el valor por defecto. Sólo aplica cuando `format=csv`.
+Specifies character used for decimal numbers. *.* is the default. Only applies when `format=csv`.
 
-Las opciones disponibles son:
+Available options are:
 
-* *,*: Coma.
-* *.*: Punto.
+* *,*: Comma.
+* *.*: Dot.
 
 ### `sep`
 
-Especifica el caracter separador de valores, siendo *,* el valor por defecto. Sólo aplica cuando `format=csv`.
+Specifies the character that separates values in a CSV file. *,* is the default. Only applies when `format=csv`.
 
-Se puede utilizar cualquier caracter UTF-8, si bien se recomienda preservar el uso de la coma en la mayoría de los casos.
+Any UTF-8 character can be used, but it is highly recommended to keep the default (comma) in most cases.
 
 ### `flatten`
 
-Especifica si la respuesta de los metadatos de las series pedidas deberían devolverse en una jerarquía _plana_.
+Specifies if the metadata results should be returned with a flat hierarchy.
 
-Cuando el parámetro no es incluido, la respuesta tiene la siguiente estructura:
+When parameter is not included, API call result has a nested structure:
 
 ```
     {
@@ -326,14 +326,14 @@ Cuando el parámetro no es incluido, la respuesta tiene la siguiente estructura:
     }
 ```
 
-Una consulta con parámetro `flatten` incluido tendrá la siguiente respuesta de metadatos:
+When `flatten` is included, API call metadata result has a flat structure:
 
 ```
     {
         catalog_meta1: ...,
         catalog_meta2: ...,
         dataset_meta1: ...,
-        <nivel>_<meta_key>: <meta_value>
+        <level>_<meta_key>: <meta_value>
         ...
     }
 ```

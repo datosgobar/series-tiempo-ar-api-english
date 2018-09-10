@@ -5,16 +5,16 @@
  
 
 - [1. Look for series](#1-look-for-series)
-  - [In a file](#in-a-file)
-  - [In the time series explorer](#in-the-time-series-explorer)
+    - [In a file](#in-a-file)
+    - [In the time series explorer](#in-the-time-series-explorer)
 - [2. Build query](#2-build-query)
-  - [Manually](#manually)
-  - [In the call generator](#in-the-call-generator)
+    - [Manually](#manually)
+    - [In the call generator](#in-the-call-generator)
 - [3. Make query](#3-make-query)
-  - [Use or integrate JSON](#use-or-integrate-json)
-  - [Download CSV](#download-csv)
-  - [Integrate in a spreadsheet](#integrate-in-a-spreadsheet)
-  - [Use in the time series explorer](#use-in-the-time-series-explorer)
+    - [Use or integrate JSON](#use-or-integrate-json)
+    - [Download CSV](#download-csv)
+    - [Integrate in a spreadsheet](#integrate-in-a-spreadsheet)
+    - [Use in the time series explorer](#use-in-the-time-series-explorer)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
