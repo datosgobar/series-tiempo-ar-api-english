@@ -1,8 +1,31 @@
 site_name: Time Series API
-pages:
-- Home: index.md
-- Quick start: quick_start.md
-- Spreadsheet integration: spreadsheet_integration.md
-- API reference: api_reference.md
-- Third party: third_party.md
-theme: readthedocs
+site_url: http://apis.datos.gob.ar/series/
+site_description: Argentina's Time Series API documentation.
+site_author: Datos Argentina
+repo_url: https://github.com/datosgobar/series-tiempo-ar-api/
+
+nav:
+  - Home: index.md
+  - Users:
+    - Start using the Time Series API: quick_start.md
+    - Filter and transform series: additional_parameters.md
+    - Integrate API in a spreadsheet: spreadsheet_integration.md
+    - Python use: python_usage.md
+    - API reference:
+      - /series: 'reference/api_reference.md'
+      - /search: 'reference/search_reference.md'
+      # - OpenAPI: https://datosgobar.github.io/series-tiempo-ar-api/open_api
+  - Applications: applications.md
+  # - Desarrolladores:
+    # - Arquitectura: 'developers/arquitectura.md'
+    # - Instalación: 'developers/development.md'
+    # - Administración: 'developers/admin.md'
+
+theme: datosgobar_docs
+
+markdown_extensions: [fenced_code, codehilite, admonition]
+
+extra_css:
+  - css/extra_rtd.css
+
+google_analytics: ['UA-91435482-1', "https://datosgobar.github.io/series-tiempo-ar-api/"]

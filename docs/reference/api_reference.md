@@ -1,132 +1,144 @@
-# Referencia API
+# API reference: series
 
-La API de Series de Tiempo permite obtener datos de una o más series, permitiendo hacer filtros por el índice de tiempo, cambios de granularidad en la dimensión temporal y cambios en la unidad de los valores de la serie, entre otras operaciones.
+Endpoint: `/series`
+
+The `/series` endpoint allows **obtaining data and metadata** of one or more series, filtering by the time index, changing temporal aggregation and changing units, between other operations.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
 - [Tabla de parámetros](#tabla-de-parametros)
-    - [`ids`](#ids)
-    - [`representation_mode`](#representation_mode)
-    - [`collapse`](#collapse)
-    - [`collapse_aggregation`](#collapse_aggregation)
-    - [`limit`](#limit)
-    - [`start`](#start)
-    - [`start_date`](#start_date)
-    - [`end_date`](#end_date)
-    - [`format`](#format)
-    - [`header`](#header)
-    - [`sort`](#sort)
-    - [`metadata`](#metadata)
+  - [`ids`](#ids)
+  - [`representation_mode`](#representation_mode)
+  - [`collapse`](#collapse)
+  - [`collapse_aggregation`](#collapse_aggregation)
+  - [`limit`](#limit)
+  - [`start`](#start)
+  - [`start_date`](#start_date)
+  - [`end_date`](#end_date)
+  - [`format`](#format)
+  - [`header`](#header)
+  - [`sort`](#sort)
+  - [`metadata`](#metadata)
+  - [`decimal`](#decimal)
+  - [`sep`](#sep)
+  - [`flatten`](#flatten)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Tabla de parámetros
+## Table of parameters
 
 <table>
     <tr>
-        <td>Nombre</td>
-        <td>Requerido</td>
-        <td>Tipo</td>
-        <td>Default</td>
-        <td>Ejemplos</td>
+        <th>Name</th>
+        <th>Required</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Examples</th>
     </tr>
     <tr>
         <td>ids</td>
-        <td>Si</td>
-        <td>Lista de caracteres alfanuméricos separados por comas.<br><br>Contiene la especificación de las series a consultar, junto a transformaciones y operaciones.</td>
+        <td>Yes</td>
+        <td>List of alphanumeric characters separated by commas.<br><br>Contains series specification to query, together with operations and transformations.</td>
         <td>N/A</td>
         <td>ids=2.4_DGI_1993_T_19,134.2_B_0_0_6</td>
     </tr>
     <tr>
         <td>representation_mode</a></td>
         <td>No</td>
-        <td>Uno de: <em>value, change, percent_change, percent_change_a_year_ago</em></td>
+        <td>One of: <em>value, change, percent_change, percent_change_a_year_ago</em></td>
         <td>value</td>
         <td>representation_mode=percent_change</td>
     </tr>
     <tr>
         <td>collapse</a></td>
         <td>No</td>
-        <td>Uno de: <em>day, week, month, quarter, year</em></td>
-        <td>La frecuencia propia de la serie</td>
+        <td>One of: <em>day, week, month, quarter, year</em></td>
+        <td>The original frequency of the series</td>
         <td>collapse=year<br>collapse=quarter</td>
     </tr>
     <tr>
         <td>collapse_aggregation</a></td>
         <td>No</td>
-        <td>Uno de: <em>avg, sum, end_of_period, min, max</em></td>
+        <td>One of: <em>avg, sum, end_of_period, min, max</em></td>
         <td>avg</td>
         <td>collapse_aggregation=sum</td>
     </tr>
     <tr>
         <td>limit</a></td>
         <td>No</td>
-        <td>Número entero positivo, no mayor que 1000.</td>
+        <td>Positive integer, less than 1000.</td>
         <td class="s4" dir="ltr">100</td>
         <td>limit=50</td>
     </tr>
     <tr>
         <td>start</a></td>
         <td>No</td>
-        <td>Número entero positivo o 0.</td>
+        <td>Positive integer or 0.</td>
         <td class="s4" dir="ltr">0</td>
         <td>start=100</td>
     </tr>
     <tr>
         <td>start_date</a></td>
         <td>No</td>
-        <td>Fecha y hora en formato ISO 8601.<br><br>Si no se especifica este parámetro, se devuelven los datos disponibles para la serie o series desde el valor más antiguo.</td>
+        <td>Date and time in ISO 8601 format.<br><br>If this parameter is not specified, data starts from the oldest value.</td>
         <td>N/A</td>
         <td>start_date=2016-11-30<br>start_date=2016-11<br>start_date=2016</td>
     </tr>
     <tr>
         <td>end_date</td>
         <td>No</td>
-        <td>Fecha y hora en formato ISO 8601.<br><br>Si no se especifica este parámetro, se devuelven los datos disponibles para la serie o series hasta el valor más reciente.</td>
+        <td>Date and time in ISO 8601 format.<br><br>If this parameter is not specified, data will end at the most recent value.</td>
         <td>N/A</td>
         <td>end_date=2016-11-30<br>end_date=2016-11<br>end_date=2016</td>
     </tr>
     <tr>
         <td>format</a></td>
         <td>No</td>
-        <td>Uno de: <em>json, csv</em></td>
+        <td>One of: <em>json, csv</em></td>
         <td>json</td>
         <td>format=csv</td>
     </tr>
     <tr>
         <td>header</td>
         <td>No</td>
-        <td>Uno de: <em>titles, ids, descriptions</em></td>
+        <td>One of: <em>titles, ids, descriptions</em></td>
         <td>titles</td>
         <td>header=ids</td>
     </tr>
     <tr>
         <td>sort</td>
         <td>No</td>
-        <td>Uno de: <em>asc, desc</em></td>
+        <td>One of: <em>asc, desc</em></td>
         <td>asc</td>
         <td>sort=desc</td>
     </tr>
     <tr>
         <td>metadata</td>
         <td>No</td>
-        <td>Uno de: <em>none, simple, full, only</em></td>
+        <td>One of: <em>none, simple, full, only</em></td>
         <td>simple</td>
         <td>metadata=none</td>
     </tr>
     <tr>
         <td>decimal</td>
         <td>No</td>
-        <td>Caracter utilizado para los decimales.<br><br>Uno de: <em>"," o "."</em></td>
+        <td>Decimal character to be used.<br><br>One of: <em>"," o "."</em></td>
         <td>.</td>
-        <td>metadata=,</td>
+        <td>decimal=,</td>
+    </tr>
+    <tr>
+        <td>sep</td>
+        <td>No</td>
+        <td>CSV values separator character.<br><br>Any UTF-8 character</em></td>
+        <td>.</td>
+        <td>sep=|</td>
     </tr>
     <tr>
         <td>flatten</td>
         <td>No</td>
-        <td>Aplana la respuesta de metadatos en un objeto con un único nivel (sin objetos anidados). No es necesario darle valor</td>
+        <td>Makes the answer flat in a single object with just one hierarchy level (no nested objects). No value should be specified.</td>
         <td></td>
         <td>flatten</td>
     </tr>
@@ -134,18 +146,18 @@ La API de Series de Tiempo permite obtener datos de una o más series, permitien
 
 ### `ids`
 
-Lista separada por comas de los identificadores de las series a seleccionar para armar la respuesta. Los datos del resultado de la llamada tendrán una columna por cada serie seleccionada, en el mismo orden.
+Comma separated list of series ids. Data results will have a column for each series id, in the same order.
 
-Este parámetro es requerido para la llamada. En caso de no suministrarse, se devolverá un error.
+**This parameter is mandatory for making a call**. In case is omitted, result will be an error.
 
-Cada identificador de serie podrá ser sufijado con:
+Each identifier of a series can have a suffix for:
 
-* Un modo de representación ([`representation_mode`](#representation_mode)).
-* Una función de agregación temporal ([`collapse_aggregation`](#collapse_aggregation)).
+* Changing representation mode ([`representation_mode`](#representation_mode)).
+* Changing temporal aggregation ([`collapse_aggregation`](#collapse_aggregation)).
 
-Cuando estos atributos se utilizan como parte del parámetro `ids`, se deben separar usando el caracter ":". El orden de los componentes no incide en el resultado de la operación.
+When these attributes are used inside `ids` parameter, they must be separated using ":" character. The order of the components does not affect the order of the operation.
 
-Ejemplos:
+Examples:
 
 ```md
 ids=2.4_DGI_1993_T_19,134.2_B_0_0_6:change
@@ -157,30 +169,24 @@ ids=2.4_DGI_1993_T_19:end_of_period:percent_change,134.2_B_0_0_6:sum:change
 
 ### `representation_mode`
 
-Este parámetro indica el modo de representación de las series, y se aplica a todas aquéllas que no tengan otro modo de representación distinto indicado en el parámetro [`ids`](#ids) en forma individual.
+Indicates the representation mode of the series. It is applied to all in the [`ids`](#ids) parameter not having a different representation mode applied.
 
-El modo de representación por defecto es el valor medido en la serie (*value*).
+Representation mode by default is the original value of the series (*value*).
 
-Los modos de representación disponibles son:
+Available representation modes are:
 
-* *value*: Es el modo de representación por defecto. Devuelve el valor medido en la serie.
-* *change*: Devuelve la diferencia absoluta entre el valor del período t y el de t-1.
-* *percent_change*: Devuelve la variación porcentual entre el valor del período t y el de t-1.
-* *percent_change_a_year_ago*: Devuelve la variación porcentual entre el valor del período t y el del período t equivalente de hace un año atrás.
+* *value*: Default representation mode. Returns the original value of the serie.
+* *change*: Returns the absolute difference between value of t period and t-1 period.
+* *percent_change*: Returns percentage variation of the value in the t period and t-1 period.
+* *percent_change_a_year_ago*: Returns percentage variation between t period value and the same t period, a year ago.
 
-Las funciones de transformación disponibles en [`representation_mode`](#representation_mode) también pueden especificarse para **series individuales** usando la notación `:percent_change` junto al id de la serie:
+Available transformation functions in [`representation_mode`](#representation_mode) can also be specified for **individual series** usring `:percent_change` notation, together with series id:
 
-```md
-http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6,135.1_M_0_0_6:percent_change&collapse=year&start_date=2010
-```
-[Descargar](http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6,135.1_M_0_0_6:percent_change&collapse=year&start_date=2010
-)
+!!! note "[EMAE Construcción. Variación porcentual de valores mensuales, respecto del período anterior.](http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change)"
+    [`https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change`](https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change)
 
-```md
-http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6:percent_change_a_year_ago,135.1_M_0_0_6:percent_change&collapse=year&start_date=2010
-```
-[Descargar](http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6:percent_change_a_year_ago,135.1_M_0_0_6:percent_change&collapse=year&start_date=2010
-)
+!!! note "[EMAE Construcción (variación porcentual período a período), EMAE Construcción (variación porcentual interanual). Valores mensuales.](http://datos.gob.ar/series/api/series/?ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago)"
+    [`https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago`](https://apis.datos.gob.ar/series/api/series/?limit=1000&ids=11.3_VMATC_2004_M_12:percent_change,11.3_VMATC_2004_M_12:percent_change_a_year_ago)
 
 El parámetro [`representation_mode`](#representation_mode) seguirá afectando a todas las series para las cuales no se especifique individualmente una función de transformación.
 
@@ -223,19 +229,15 @@ Los valores disponibles para el parámetro son:
 
 Las funciones de agregación temporal disponibles en [`collapse_aggregation`](#collapse_aggregation) también pueden especificarse para **series individuales** usando la notación `:sum` junto al id de la serie:
 
-```md
-http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6,135.1_M_0_0_6:sum&collapse=year&start_date=2010
-```
-[Descargar](http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6,135.1_M_0_0_6:sum&collapse=year&start_date=2010
-)
+!!! note "[Cobro de servicios de turismo y viajes. Valores mensuales promediados y sumados por año.](http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year)"
 
-```md
-http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6:end_of_period,135.1_M_0_0_6:sum&collapse=year&start_date=2010
-```
-[Descargar](http://apis.datos.gob.ar/series/api/series?ids=135.1_M_0_0_6:end_of_period,135.1_M_0_0_6:sum&collapse=year&start_date=2010
-)
+    [`https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year`](https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30:sum&collapse=year)
 
 El parámetro [`collapse_aggregation`](#collapse_aggregation) seguirá afectando a todas las series para las cuales no se especifique individualmente una función de agregación temporal.
+
+!!! note "[Cobro de servicios de turismo y viajes. Valores mensuales promediados y sumados por año.](http://datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum)"
+
+    [`https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum`](https://apis.datos.gob.ar/series/api/series/?ids=185.1_COBRO_SERVJES_0_M_30:avg,185.1_COBRO_SERVJES_0_M_30&collapse=year&collapse_aggregation=sum)
 
 ### `limit`
 
@@ -303,11 +305,18 @@ Las opciones disponibles son:
 * *,*: Coma.
 * *.*: Punto.
 
+### `sep`
+
+Especifica el caracter separador de valores, siendo *,* el valor por defecto. Sólo aplica cuando `format=csv`.
+
+Se puede utilizar cualquier caracter UTF-8, si bien se recomienda preservar el uso de la coma en la mayoría de los casos.
+
 ### `flatten`
 
 Especifica si la respuesta de los metadatos de las series pedidas deberían devolverse en una jerarquía _plana_.
 
 Cuando el parámetro no es incluido, la respuesta tiene la siguiente estructura:
+
 ```
     {
         "catalog": [<catalog_meta>],
@@ -317,7 +326,7 @@ Cuando el parámetro no es incluido, la respuesta tiene la siguiente estructura:
     }
 ```
 
-Una query con parámetro flatten incluido tendrá la siguiente respuesta de metadatos:
+Una consulta con parámetro `flatten` incluido tendrá la siguiente respuesta de metadatos:
 
 ```
     {

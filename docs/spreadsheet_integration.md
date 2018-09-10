@@ -5,24 +5,26 @@
  
 
 - [Google Drive](#google-drive)
-    - [1. Modificar la configuración regional](#1-modificar-la-configuracion-regional)
-    - [2. Importar los datos a la planilla](#2-importar-los-datos-a-la-planilla)
-    - [3. Elegir el formato de fecha](#3-elegir-el-formato-de-fecha)
-    - [4. Modificar la URL de consulta a la API](#4-modificar-la-url-de-consulta-a-la-api)
+  - [1. Modify regional configuration](#1-modify-regional-configuration)
+  - [2. Import data to the spreadsheet](#2-import-data-to-the-spreadsheet)
+  - [3. Choose date format](#3-choose-date-format)
+  - [4. Modify API call URL](#4-modify-api-call-url)
 - [Excel](#excel)
-    - [1. Generar una nueva consulta desde una URL](#1-generar-una-nueva-consulta-desde-una-url)
-    - [2. Editar codificación del archivo origen](#2-editar-codificacion-del-archivo-origen)
-    - [3. Editar los tipos de las columnas](#3-editar-los-tipos-de-las-columnas)
-    - [4. Modificar la configuración regional](#4-modificar-la-configuracion-regional)
-    - [5. Guardar las modificaciones y cargar la consulta](#5-guardar-las-modificaciones-y-cargar-la-consulta)
+  - [1. Generate a query from URL](#1-generate-a-query-from-url)
+  - [2. Edit original file codification](#2-edit-original-file-codification)
+  - [3. Edit column types](#3-edit-column-types)
+  - [4. Modify regional configuration](#4-modify-regional-configuration)
+  - [5. Save modifications and load the query](#5-save-modifications-and-load-the-query)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Google Drive
 
-### 1. Modificar la configuración regional
+### 1. Modify regional configuration
 
-La API genera archivos CSV usando “.” como separador decimal. Para que Google Spreadsheet lea correctamente el archivo debe elegirse “Estados Unidos” o cualquier otra región compatible.
+API generates CSV files using “.” as a decimal character. You should choose "United States" regional configuration so Google Spreadsheet reads properly the file, or any other compatible region.
+
+Alternatively, you can ask the API to change the decimal character using [`decimal`](reference/api_reference.md#decimal) parameter.
 
 ![](assets/google_drive_letra_1.png)
 <br><br>
@@ -30,17 +32,17 @@ La API genera archivos CSV usando “.” como separador decimal. Para que Googl
 <br><br>
 ![](assets/google_drive_letra_3.png)
 
-### 2. Importar los datos a la planilla
+### 2. Import data to the spreadsheet
 
-La función IMPORTDATA() toma la URL de la consulta a la API y trae los datos a la planilla.
+`IMPORTDATA()` function takes the API call URL and gets data to the spreadsheet.
 
 ![](assets/google_drive_letra_4.png)
 <br><br>
 ![](assets/google_drive_letra_5.png)
 
-### 3. Elegir el formato de fecha
+### 3. Choose date format
 
-El índice de tiempo puede verse como un número la primera vez que se importan los datos. Lo más conveniente es seleccionar toda la columna y elegir el formato en el que se desea visualizar la fecha.
+Time index can be seen as a number first time data is imported. You can select the entire column and choose the format to visualize date values.
 
 ![](assets/google_drive_letra_6.png)
 <br><br>
@@ -48,9 +50,9 @@ El índice de tiempo puede verse como un número la primera vez que se importan 
 <br><br>
 ![](assets/google_drive_letra_8.png)
 
-### 4. Modificar la URL de consulta a la API
+### 4. Modify API call URL
 
-Una vez importada la tabla por primera vez, se pueden modificar los distintos parámetros de la consulta según lo que se necesite. La tabla se actualizará con cada cambio.
+Once you have imported a table for the first time, you can modify parameters to change the query. The table will be updated each time.
 
 ![](assets/google_drive_letra_9.png)
 <br><br>
@@ -60,9 +62,9 @@ Una vez importada la tabla por primera vez, se pueden modificar los distintos pa
 
 ## Excel
 
-### 1. Generar una nueva consulta desde una URL
+### 1. Generate a query from URL
 
-“Datos” > “Nueva consulta” > “Desde otras fuentes” > “Desde una web”
+“Data" > "New query" > “From other sources" > “From web”
 
 ![](assets/excel_letra_1.png)
 <br><br>
@@ -72,9 +74,9 @@ Una vez importada la tabla por primera vez, se pueden modificar los distintos pa
 <br><br>
 ![](assets/excel_letra_4.png)
 
-### 2. Editar codificación del archivo origen
+### 2. Edit original file codification
 
-La API genera los archivos CSV con codificación “Unicode UTF-8”, que no es el valor por defecto de Excel. Click en la rueda de “Origen” > “Origen de archivo” > Elegir “Unicode UTF-8”
+API generates CSV files using "Unicode UTF-8" encoding, which is not default in Excel. Click in "Origin" > "File origin" > Choose "Unicode UTF-8".
 
 ![](assets/excel_letra_5.png)
 <br><br>
@@ -82,12 +84,12 @@ La API genera los archivos CSV con codificación “Unicode UTF-8”, que no es 
 <br><br>
 ![](assets/excel_letra_7.png)
 
-### 3. Editar los tipos de las columnas
+### 3. Edit column types
 
-Excel puede no interpretar correctamente los tipos de las columnas de la tabla si tiene un separador decimal que no sea “.”. Se debe utilizar el “Editor avanzado” para corregir los tipos de las columnas.
+Excel can read wrong column types if the decimal separator is not ".". You should use advanced editor to correct column data types. (You can also use [`decimal`](reference/api_reference.md#decimal) parameter to change the decimal separator)
 
-* El tipo de la columna “indice_tiempo” debe ser “type date”
-* El tipo del resto de las columnas (que contienen series) debe ser “type number”
+* “indice_tiempo” column data type should be “type date”
+* Rest of the columns, (containing series) should be “type number”
 
 ![](assets/excel_letra_8.png)
 <br><br>
@@ -97,16 +99,16 @@ Excel puede no interpretar correctamente los tipos de las columnas de la tabla s
 <br><br>
 ![](assets/excel_letra_11.png)
 
-### 4. Modificar la configuración regional
+### 4. Modify regional configuration
 
-En el mismo editor avanzado, debe corregirse al final la configuración regional para que sea “en-US” y acepte “.” como separador decimal.
+In the same advanced editor, regional configurations should be changed at the end to be “en-US” and accepts “.” as a decimal separator (unless [`decimal`](reference/api_reference.md#decimal) parameter is used).
 
 ![](assets/excel_letra_12.png)
 <br><br>
 ![](assets/excel_letra_13.png)
 
-### 5. Guardar las modificaciones y cargar la consulta
+### 5. Save modifications and load the query
 
-Por último, haciendo click en “Cerrar y cargar” la consulta queda configurada en una tabla de Excel que se puede actualizar.
+For last, you can click in “Close and load" and the query will be configured in an Excel table that can be updated.
 
 ![](assets/excel_letra_14.png)

@@ -10,15 +10,15 @@ El almacenamiento de los datos se realiza en un cluster de [Elastic](https://www
 
 ## Componentes de la arquitectura
 
-![Diagrama de alto nivel de la arquitectura de la API de Series de Tiempo](https://raw.githubusercontent.com/datosgobar/series-tiempo-ar-api/master/docs/arquitectura-time-series-ar-api.png)
+![Diagrama de alto nivel de la arquitectura de la API de Series de Tiempo](../assets/arquitectura-time-series-ar-api.png)
 
 ### Servidor Web
 
 El servidor web contiene la aplicación *Django* que conforma el punto de entrada a la API de Series de Tiempo. La aplicación Django es ejecutada utilizando *supervisor* y publicada a la web usando el servidor web [Nginx](https://www.nginx.com/).
 
-Ésta publica un conunto de endpoints sencillos que permiten acceder a los datos y a los metadatos de la información que contiene, permitiendo configurar filtros y expresiones de transformación predefinidas (ver [documentación de la API de Series de Tiempo](https://series-tiempo-ar-api.readthedocs.io/es/latest/)).
+Ésta publica un conjunto de endpoints sencillos que permiten acceder a los datos y a los metadatos de la información que contiene, permitiendo configurar filtros y expresiones de transformación predefinidas (ver [documentación de la API de Series de Tiempo](https://series-tiempo-ar-api.readthedocs.io/es/latest/)).
 
-Se trata de una aplicación Django 1.11 (por dependencias transitivas la API no es compatible con Python3) cuyo panel de administración se utiliza exhaustivamente para configurar el funcionamiento de la misma.
+Se trata de una aplicación Django 1.11 (por dependencias transitivas, la API no es compatible con Python3) cuyo panel de administración se utiliza exhaustivamente para configurar el funcionamiento de la misma.
 
 ### Cluster de Workers
 
